@@ -12,8 +12,8 @@ A responsive **Student Registration & Result Portal** built using HTML5, CSS3, B
 * Pass/Fail result
 * Form validation
 * Dynamic result display
-* Responsive design for desktop, tablet, and mobile
-* Bootstrap components and responsive layout
+* Responsive design
+* Bootstrap components
 
 ## 🛠️ Technologies Used
 
@@ -24,25 +24,26 @@ A responsive **Student Registration & Result Portal** built using HTML5, CSS3, B
 
 ## 📂 Project Structure
 
-student-registration-portal/
+```text
+student-results-portal/
 │
 ├── index.html
 ├── style.css
 ├── script.js
 └── README.md
-
+```
 
 ## 🚀 How to Run
 
-1. Download or clone this repository.
+1. Clone or download this repository.
 2. Open the project folder.
-3. Open `index.html` in your browser.
+3. Open `index.html` in a browser.
 4. Enter the student details and marks.
 5. Click **Calculate Result** to view the result.
 
 ## 🌐 Live Demo
 
-https://abhinayakuchi-source.github.io/student-registration-portal/
+https://abhinayakuchi-source.github.io/student-results-portal/
 
 ## 👩‍💻 Developer
 
