@@ -15,8 +15,8 @@ The Student Portal is a lightweight web application designed to manage and displ
 - JavaScript
 
 ## 🌐 Live Demo
-[Student Portal](https://abhinayakuchi-source.github.io/student-portal/)
-
+[Student Portal](https://abhinayakuchi-source.github.io/student-portal/
+)
 ## 📌 Usage
 Clone the repository and open `index.html` in your browser:
 ```bash
