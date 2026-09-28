@@ -1,35 +1,168 @@
-function calculateResult() {
-  let name = document.getElementById("name").value;
-  let course = document.getElementById("course").value;
-  let m1 = parseInt(document.getElementById("marks1").value);
-  let m2 = parseInt(document.getElementById("marks2").value);
-  let m3 = parseInt(document.getElementById("marks3").value);
-  let m4 = parseInt(document.getElementById("marks4").value);
-  let m5 = parseInt(document.getElementById("marks5").value);
+// Get the student registration form
+const form = document.getElementById("studentForm");
 
-  // Validation
-  if (!name || !course || isNaN(m1) || isNaN(m2) || isNaN(m3) || isNaN(m4) || isNaN(m5)) {
-    alert("⚠️ Please fill all fields correctly!");
-    return;
-  }
-  if ([m1, m2, m3, m4, m5].some(m => m < 0 || m > 100)) {
-    alert("Marks must be between 0 and 100!");
-    return;
-  }
+// Handle form submission
+form.addEventListener("submit", function (event) {
 
-  // Calculation
-  let total = m1 + m2 + m3 + m4 + m5;
-  let percentage = (total / 500) * 100; // 5 subjects → denominator 500
-  let status = percentage >= 40 ? "Pass" : "Fail";
+    // Prevent page refresh
+    event.preventDefault();
 
-  // Insert into table
-  let table = document.getElementById("resultTable").getElementsByTagName("tbody")[0];
-  let newRow = table.insertRow();
-  newRow.innerHTML = `
-    <td>${name}</td>
-    <td>${course}</td>
-    <td>${total}</td>
-    <td>${percentage.toFixed(2)}%</td>
-    <td>${status}</td>
-  `;
-}
+    // Get student details
+    const studentName =
+        document.getElementById("studentName").value.trim();
+
+    const rollNumber =
+        document.getElementById("rollNumber").value.trim();
+
+    const course =
+        document.getElementById("course").value;
+
+    const year =
+        document.getElementById("year").value;
+
+    // Get subject marks
+    const mark1 =
+        Number(document.getElementById("mark1").value);
+
+    const mark2 =
+        Number(document.getElementById("mark2").value);
+
+    const mark3 =
+        Number(document.getElementById("mark3").value);
+
+    const mark4 =
+        Number(document.getElementById("mark4").value);
+
+    const mark5 =
+        Number(document.getElementById("mark5").value);
+
+
+    // Store all marks in an array
+    const marks = [
+        mark1,
+        mark2,
+        mark3,
+        mark4,
+        mark5
+    ];
+
+
+    // Check whether marks are valid
+    const invalidMarks = marks.some(function (mark) {
+
+        return mark < 0 || mark > 100;
+
+    });
+
+
+    if (invalidMarks) {
+
+        alert("Please enter marks between 0 and 100.");
+
+        return;
+    }
+
+
+    // Calculate total marks
+    const total =
+        mark1 +
+        mark2 +
+        mark3 +
+        mark4 +
+        mark5;
+
+
+    // Calculate percentage
+    const percentage = total / 5;
+
+
+    // Determine Pass or Fail
+    // In this implementation, minimum 40 marks
+    // is required in every subject.
+    const passed = marks.every(function (mark) {
+
+        return mark >= 40;
+
+    });
+
+
+    const status = passed ? "PASS" : "FAIL";
+
+
+    // Display student information
+    document.getElementById("displayName").textContent =
+        studentName;
+
+    document.getElementById("displayRoll").textContent =
+        rollNumber;
+
+    document.getElementById("displayCourse").textContent =
+        course;
+
+    document.getElementById("displayYear").textContent =
+        year;
+
+
+    // Display calculated result
+    document.getElementById("totalMarks").textContent =
+        total + " / 500";
+
+    document.getElementById("percentage").textContent =
+        percentage.toFixed(2) + "%";
+
+    document.getElementById("status").textContent =
+        status;
+
+
+    // Show result card
+    document.getElementById("resultCard")
+        .classList.remove("d-none");
+
+
+    // Show result message
+    const resultMessage =
+        document.getElementById("resultMessage");
+
+    resultMessage.classList.remove("d-none");
+
+
+    if (passed) {
+
+        resultMessage.className =
+            "alert alert-success";
+
+        resultMessage.textContent =
+            "Result calculated successfully! Student has PASSED.";
+
+    } else {
+
+        resultMessage.className =
+            "alert alert-danger";
+
+        resultMessage.textContent =
+            "Result calculated successfully. Student has FAILED.";
+
+    }
+
+
+    // Scroll automatically to result section
+    document.getElementById("result")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+});
+
+
+// Handle Reset button
+form.addEventListener("reset", function () {
+
+    // Hide result card
+    document.getElementById("resultCard")
+        .classList.add("d-none");
+
+    // Hide result message
+    document.getElementById("resultMessage")
+        .classList.add("d-none");
+
+});
