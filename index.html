@@ -1,56 +1,832 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Student Registration & Result Portal</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Registration & Result Portal</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="container mt-4">
-  <h2 class="text-center mb-4">Student Registration & Result Portal</h2>
-  
-  <!-- Registration Form -->
-  <form id="studentForm" class="card p-3">
-    <div class="mb-3">
-      <label class="form-label">Name</label>
-      <input type="text" id="name" class="form-control" required>
-    </div>
-    <div class="mb-3">
-      <label class="form-label">Course</label>
-      <select id="course" class="form-select" required>
-        <option value="">Select Course</option>
-        <option>B.Tech Computer Science (AI&DS)</option>
-        <option>BCom</option>
-        <option>BA English</option>
-      </select>
-    </div>
-    <div class="mb-3">
-      <label class="form-label">Marks (out of 100)</label>
-      <input type="number" id="marks1" class="form-control" placeholder="Subject 1" required>
-      <input type="number" id="marks2" class="form-control mt-2" placeholder="Subject 2" required>
-      <input type="number" id="marks3" class="form-control mt-2" placeholder="Subject 3" required>
-      <input type="number" id="marks4" class="form-control mt-2" placeholder="Subject 4" required>
-      <input type="number" id="marks5" class="form-control mt-2" placeholder="Subject 5" required>
-    </div>
-    <button type="button" class="btn btn-primary" onclick="calculateResult()">Submit</button>
-  </form>
 
-  <!-- Result Table -->
-  <div class="mt-4">
-    <h4>Student Results</h4>
-    <table class="table table-bordered" id="resultTable">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Course</th>
-          <th>Total</th>
-          <th>Percentage</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  </div>
+<body>
 
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold" href="#home">
+            <i class="bi bi-mortarboard-fill"></i>
+            Student Portal
+        </a>
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarMenu">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarMenu">
+
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#home">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#registration">
+                        Registration
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#result">
+                        Result
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- ================= HOME ================= -->
+
+<section id="home" class="hero-section">
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-7">
+
+                <span class="badge bg-light text-primary mb-3">
+                    Student Academic Portal
+                </span>
+
+                <h1 class="display-4 fw-bold">
+                    Student Registration
+                    <span class="text-warning">& Result Portal</span>
+                </h1>
+
+                <p class="lead">
+                    Register student details, enter subject marks,
+                    calculate results and view academic performance
+                    using a simple responsive portal.
+                </p>
+
+                <a href="#registration"
+                   class="btn btn-light btn-lg mt-3">
+
+                    <i class="bi bi-person-plus"></i>
+                    Register Student
+
+                </a>
+
+            </div>
+
+            <div class="col-lg-5 text-center mt-5 mt-lg-0">
+
+                <div class="hero-card">
+
+                    <i class="bi bi-mortarboard-fill"></i>
+
+                    <h3>Academic Portal</h3>
+
+                    <p>
+                        Registration, marks calculation and
+                        result management in one place.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FEATURES ================= -->
+
+<section class="section-padding">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <span class="section-label">
+                FEATURES
+            </span>
+
+            <h2 class="fw-bold mt-2">
+                Portal Features
+            </h2>
+
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+
+                <div class="feature-card">
+
+                    <i class="bi bi-person-plus"></i>
+
+                    <h5>Student Registration</h5>
+
+                    <p>
+                        Enter and validate student personal
+                        and academic information.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="feature-card">
+
+                    <i class="bi bi-calculator"></i>
+
+                    <h5>Result Calculation</h5>
+
+                    <p>
+                        Automatically calculate total marks
+                        and percentage.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="feature-card">
+
+                    <i class="bi bi-bar-chart"></i>
+
+                    <h5>Result Display</h5>
+
+                    <p>
+                        Dynamically display student details
+                        and Pass/Fail status.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= REGISTRATION ================= -->
+
+<section id="registration"
+         class="section-padding bg-light">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <span class="section-label">
+                REGISTRATION
+            </span>
+
+            <h2 class="fw-bold mt-2">
+                Student Registration
+            </h2>
+
+            <p class="text-muted">
+                Enter student details and examination marks.
+            </p>
+
+        </div>
+
+
+        <div class="form-card">
+
+            <form id="studentForm">
+
+                <div class="row g-4">
+
+                    <!-- Student Name -->
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Student Name
+                        </label>
+
+                        <input type="text"
+                               id="studentName"
+                               class="form-control"
+                               placeholder="Enter student name"
+                               required>
+
+                    </div>
+
+
+                    <!-- Roll Number -->
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Roll Number
+                        </label>
+
+                        <input type="text"
+                               id="rollNumber"
+                               class="form-control"
+                               placeholder="Enter roll number"
+                               required>
+
+                    </div>
+
+
+                    <!-- Email -->
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Email
+                        </label>
+
+                        <input type="email"
+                               id="email"
+                               class="form-control"
+                               placeholder="Enter email"
+                               required>
+
+                    </div>
+
+
+                    <!-- Mobile -->
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Mobile Number
+                        </label>
+
+                        <input type="tel"
+                               id="mobile"
+                               class="form-control"
+                               placeholder="Enter 10-digit mobile number"
+                               pattern="[0-9]{10}"
+                               required>
+
+                    </div>
+
+
+                    <!-- Course -->
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Course
+                        </label>
+
+                        <select id="course"
+                                class="form-select"
+                                required>
+
+                            <option value="">
+                                Select Course
+                            </option>
+
+                            <option>B.Tech Artificial Intelligence & Data Science</option>
+                            <option>B.Tech Computer Science</option>
+                            <option>B.Tech Information Technology</option>
+                            <option>B.Tech Electronics & Communication</option>
+                            <option>B.Sc Computer Science</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Year -->
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Year
+                        </label>
+
+                        <select id="year"
+                                class="form-select"
+                                required>
+
+                            <option value="">
+                                Select Year
+                            </option>
+
+                            <option>1st Year</option>
+                            <option>2nd Year</option>
+                            <option>3rd Year</option>
+                            <option>4th Year</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Subject 1 -->
+
+                    <div class="col-md-4">
+
+                        <label class="form-label">
+                            Mathematics
+                        </label>
+
+                        <input type="number"
+                               id="mark1"
+                               class="form-control"
+                               min="0"
+                               max="100"
+                               placeholder="0 - 100"
+                               required>
+
+                    </div>
+
+
+                    <!-- Subject 2 -->
+
+                    <div class="col-md-4">
+
+                        <label class="form-label">
+                            Programming
+                        </label>
+
+                        <input type="number"
+                               id="mark2"
+                               class="form-control"
+                               min="0"
+                               max="100"
+                               placeholder="0 - 100"
+                               required>
+
+                    </div>
+
+
+                    <!-- Subject 3 -->
+
+                    <div class="col-md-4">
+
+                        <label class="form-label">
+                            Data Science
+                        </label>
+
+                        <input type="number"
+                               id="mark3"
+                               class="form-control"
+                               min="0"
+                               max="100"
+                               placeholder="0 - 100"
+                               required>
+
+                    </div>
+
+
+                    <!-- Subject 4 -->
+
+                    <div class="col-md-4">
+
+                        <label class="form-label">
+                            Database Management
+                        </label>
+
+                        <input type="number"
+                               id="mark4"
+                               class="form-control"
+                               min="0"
+                               max="100"
+                               placeholder="0 - 100"
+                               required>
+
+                    </div>
+
+
+                    <!-- Subject 5 -->
+
+                    <div class="col-md-4">
+
+                        <label class="form-label">
+                            Computer Networks
+                        </label>
+
+                        <input type="number"
+                               id="mark5"
+                               class="form-control"
+                               min="0"
+                               max="100"
+                               placeholder="0 - 100"
+                               required>
+
+                    </div>
+
+
+                    <!-- Buttons -->
+
+                    <div class="col-12 text-center">
+
+                        <button type="submit"
+                                class="btn btn-primary px-5 me-2">
+
+                            <i class="bi bi-calculator"></i>
+                            Calculate Result
+
+                        </button>
+
+                        <button type="reset"
+                                class="btn btn-outline-secondary px-5">
+
+                            <i class="bi bi-arrow-counterclockwise"></i>
+                            Reset
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= RESULT ================= -->
+
+<section id="result" class="section-padding">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <span class="section-label">
+                RESULT
+            </span>
+
+            <h2 class="fw-bold mt-2">
+                Student Result
+            </h2>
+
+        </div>
+
+
+        <div id="resultMessage"
+             class="alert d-none"
+             role="alert">
+        </div>
+
+
+        <div id="resultCard"
+             class="result-card d-none">
+
+            <div class="text-center mb-4">
+
+                <i class="bi bi-award-fill result-icon"></i>
+
+                <h3 id="resultTitle">
+                    Examination Result
+                </h3>
+
+            </div>
+
+
+            <div class="row g-3">
+
+                <div class="col-md-6">
+
+                    <div class="result-box">
+
+                        <span>Student Name</span>
+
+                        <strong id="displayName"></strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="result-box">
+
+                        <span>Roll Number</span>
+
+                        <strong id="displayRoll"></strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="result-box">
+
+                        <span>Course</span>
+
+                        <strong id="displayCourse"></strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="result-box">
+
+                        <span>Year</span>
+
+                        <strong id="displayYear"></strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="result-box">
+
+                        <span>Total Marks</span>
+
+                        <strong id="totalMarks"></strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="result-box">
+
+                        <span>Percentage</span>
+
+                        <strong id="percentage"></strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="result-box">
+
+                        <span>Status</span>
+
+                        <strong id="status"></strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <div class="container text-center">
+
+        <h5>
+            <i class="bi bi-mortarboard-fill"></i>
+            Student Registration & Result Portal
+        </h5>
+
+        <p>
+            HTML5 | CSS3 | Bootstrap | JavaScript
+        </p>
+
+        <p class="mb-0">
+            © 2026 Student Portal. All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<!-- Bootstrap JavaScript -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<!-- Custom JavaScript -->
+
+<script>
+
+    const form = document.getElementById("studentForm");
+
+    form.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const studentName =
+            document.getElementById("studentName").value.trim();
+
+        const rollNumber =
+            document.getElementById("rollNumber").value.trim();
+
+        const course =
+            document.getElementById("course").value;
+
+        const year =
+            document.getElementById("year").value;
+
+        const mark1 =
+            Number(document.getElementById("mark1").value);
+
+        const mark2 =
+            Number(document.getElementById("mark2").value);
+
+        const mark3 =
+            Number(document.getElementById("mark3").value);
+
+        const mark4 =
+            Number(document.getElementById("mark4").value);
+
+        const mark5 =
+            Number(document.getElementById("mark5").value);
+
+
+        /* Validate Marks */
+
+        const marks = [
+            mark1,
+            mark2,
+            mark3,
+            mark4,
+            mark5
+        ];
+
+        const invalidMarks =
+            marks.some(mark => mark < 0 || mark > 100);
+
+
+        if (invalidMarks) {
+
+            alert("Please enter marks between 0 and 100.");
+
+            return;
+
+        }
+
+
+        /* Calculate Total */
+
+        const total =
+            mark1 +
+            mark2 +
+            mark3 +
+            mark4 +
+            mark5;
+
+
+        /* Calculate Percentage */
+
+        const percentage =
+            total / 5;
+
+
+        /* Pass / Fail */
+
+        const passed =
+            marks.every(mark => mark >= 40);
+
+
+        const status =
+            passed ? "PASS" : "FAIL";
+
+
+        /* Display Student Details */
+
+        document.getElementById("displayName").textContent =
+            studentName;
+
+        document.getElementById("displayRoll").textContent =
+            rollNumber;
+
+        document.getElementById("displayCourse").textContent =
+            course;
+
+        document.getElementById("displayYear").textContent =
+            year;
+
+
+        /* Display Result */
+
+        document.getElementById("totalMarks").textContent =
+            total + " / 500";
+
+        document.getElementById("percentage").textContent =
+            percentage.toFixed(2) + "%";
+
+        document.getElementById("status").textContent =
+            status;
+
+
+        /* Show Result */
+
+        document.getElementById("resultCard")
+            .classList.remove("d-none");
+
+
+        const resultMessage =
+            document.getElementById("resultMessage");
+
+
+        resultMessage.classList.remove("d-none");
+
+
+        if (passed) {
+
+            resultMessage.className =
+                "alert alert-success";
+
+            resultMessage.textContent =
+                "Result calculated successfully! Student has PASSED.";
+
+        } else {
+
+            resultMessage.className =
+                "alert alert-danger";
+
+            resultMessage.textContent =
+                "Result calculated successfully. Student has FAILED.";
+
+        }
+
+
+        /* Scroll to Result */
+
+        document.getElementById("result")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+
+    });
+
+
+    /* Reset Result */
+
+    form.addEventListener("reset", function() {
+
+        document.getElementById("resultCard")
+            .classList.add("d-none");
+
+        document.getElementById("resultMessage")
+            .classList.add("d-none");
+
+    });
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="script.js"></script>
+
+</body>
+</html>
 </body>
 </html>
