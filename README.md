@@ -614,10 +614,7 @@ https://github.com/abhinayakuchi-source/student-results-portal
 https://abhinayakuchi-source.github.io/student-results-portal/
 
 ---
-
-# 🖼️ Recommended Screenshots
-
-For a stronger GitHub presentation, screenshots can be added for:
+## web page 
 
 ## 🏠 Home / Landing Section
 
